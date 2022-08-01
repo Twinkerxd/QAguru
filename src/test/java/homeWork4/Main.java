@@ -15,6 +15,7 @@ public class Main {
     static void configure() {
         Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920x1080";
+        //Configuration.holdBrowserOpen = true;
     }
 
     static void removeAds() {
@@ -45,15 +46,15 @@ public class Main {
         $(byText("Delhi")).click();
         $("#submit").click();
 
-        $(".modal-body").shouldHave(text("Homer Simpson"));
-        $(".modal-body").shouldHave(text("example@gmail.com"));
-        $(".modal-body").shouldHave(text("Male"));
-        $(".modal-body").shouldHave(text("9998887766"));
-        $(".modal-body").shouldHave(text("09 August,2022"));
-        $(".modal-body").shouldHave(text("Kappa 123"));
-        $(".modal-body").shouldHave(text("Math"));
-        $(".modal-body").shouldHave(text("Sports"));
-        $(".modal-body").shouldHave(text("ABC.webp"));
-        $(".modal-body").shouldHave(text("NCR Delhi"));
+        $(".modal-body").shouldHave(
+                text("Homer Simpson"),
+                text("example@gmail.com"),
+                text("Male"),
+                text("9998887766"),
+                text("09 August,2022"),
+                text("Kappa 123"),
+                text("Sports"),
+                text("ABC.webp"),
+                text("NCR Delhi"));
     }
 }
