@@ -1,4 +1,4 @@
-package homeWork4.homeWork1;
+package homeWork1;
 
 public class Woman {
     String name;
