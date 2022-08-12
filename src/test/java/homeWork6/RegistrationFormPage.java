@@ -1,4 +1,4 @@
-package homeWork6.pages;
+package homeWork6;
 
 import com.codeborne.selenide.SelenideElement;
 

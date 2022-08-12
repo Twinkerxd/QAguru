@@ -1,12 +1,11 @@
 package homeWork6;
 
 import com.codeborne.selenide.Configuration;
-import homeWork6.pages.RegistrationFormPage;
 import org.junit.jupiter.api.*;
 
-import static homeWork6.pages.RegistrationFormPage.Months.*;
-import static homeWork6.pages.RegistrationFormPage.State.*;
-import static homeWork6.pages.RegistrationFormPage.City.*;
+import static homeWork6.RegistrationFormPage.Months.*;
+import static homeWork6.RegistrationFormPage.State.*;
+import static homeWork6.RegistrationFormPage.City.*;
 
 public class Tests {
 
