@@ -113,9 +113,9 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage checkSubmittedData(String field, String value) {
-        $(".table-responsive table").$(byText(field))
-                .parent().shouldHave(text(value));
+    public RegistrationFormPage checkSubmittedData(String fieldName, String expectedValue) {
+        $(".table-responsive table").$(byText(fieldName))
+                .parent().shouldHave(text(expectedValue));
         return this;
     }
 

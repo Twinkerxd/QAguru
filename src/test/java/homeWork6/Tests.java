@@ -4,11 +4,6 @@ import com.codeborne.selenide.Configuration;
 import homeWork6.pages.RegistrationFormPage;
 import org.junit.jupiter.api.*;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static homeWork6.pages.RegistrationFormPage.Months.*;
 import static homeWork6.pages.RegistrationFormPage.State.*;
 import static homeWork6.pages.RegistrationFormPage.City.*;
