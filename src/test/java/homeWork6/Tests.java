@@ -15,6 +15,8 @@ public class Tests {
     private final String MOBILE_PHONE = "9994443311";
     private final String ADDRESS = "Mars 1st street";
     private final String FILE_NAME = "ABC.webp";
+    private final String MATH_SUBJECT = "Maths";
+    private final String ARTS_SUBJECT = "Arts";
 
     @BeforeAll
     static void configure() {
@@ -33,8 +35,8 @@ public class Tests {
                 .setRandomGender()
                 .setMobileNumber(MOBILE_PHONE)
                 .setDateOfBirth(24, June,1992)
-                .setSubjects("ma")
-                .setSubjects("ar")
+                .setSubjects(MATH_SUBJECT)
+                .setSubjects(ARTS_SUBJECT)
                 .setRandomHobbies()
                 .uploadFile("src/test/resources/" + FILE_NAME)
                 .setCurrentAddress(ADDRESS)
@@ -46,7 +48,7 @@ public class Tests {
                 .checkSubmittedData("Student Email", EMAIL)
                 .checkSubmittedData("Mobile", MOBILE_PHONE)
                 .checkSubmittedData("Date of Birth", "24 June,1992")
-                .checkSubmittedData("Subjects", "Maths, Arts")
+                .checkSubmittedData("Subjects", MATH_SUBJECT+", "+ARTS_SUBJECT)
                 .checkSubmittedData("Picture", FILE_NAME)
                 .checkSubmittedData("Address", ADDRESS)
                 .checkSubmittedData("State and City", Rajasthan +" "+ Jaipur);
