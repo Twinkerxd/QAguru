@@ -18,7 +18,8 @@ dependencies {
             'org.assertj:assertj-core:3.23.1',     // ассёрты
             'com.codeborne:pdf-test:1.7.0',       // работа с PDF
             'com.codeborne:xls-test:1.4.3',      // работа с xls
-            'com.opencsv:opencsv:5.6'           // работа с csv
+            'com.opencsv:opencsv:5.6',          // работа с csv
+            'com.fasterxml.jackson.core:jackson-databind:2.13.3' // работа с json
     )
 }
 

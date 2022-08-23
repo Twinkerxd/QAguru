@@ -1,0 +1,12 @@
+{
+  "name": "Sergei",
+  "age": 30,
+  "hobbies": ["swimming", "football", "games"],
+  "isLearningAutomation": true,
+  "animals": {
+    "type": "cat",
+    "name": "Pixi",
+    "age": 2,
+    "isLikesToEat": true
+  }
+}

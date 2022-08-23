@@ -15,7 +15,7 @@ import java.util.zip.ZipFile;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.*;
 
-public class Tests {
+public class ZIPTests {
 
     /**
      * 1.
