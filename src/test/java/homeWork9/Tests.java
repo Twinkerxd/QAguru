@@ -5,7 +5,6 @@ import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Enumeration;
@@ -38,7 +37,7 @@ public class Tests {
 
         while (entries.hasMoreElements()) {
             ZipEntry entry = entries.nextElement();
-             inputStream = zipFile.getInputStream(entry);
+            inputStream = zipFile.getInputStream(entry);
 
             if (entry.getName().contains(fileExtension.toString().toLowerCase())) {
                 return inputStream;
@@ -52,13 +51,13 @@ public class Tests {
     }
 
     @Test
-    void debugPDF() throws Exception {
+    void checkingPdfFromZip() throws Exception {
         PDF pdf = new PDF(getFileFromZIP(FileExtension.PDF));
         assertThat(pdf.text).contains("REMEMBER THESE SHORTCUTS");
     }
 
     @Test
-    void debugXLS() throws Exception {
+    void checkingXlsFromZip() throws Exception {
         XLS xls = new XLS(getFileFromZIP(FileExtension.XLS));
         String actualValue = String.valueOf(xls
                 .excel
@@ -71,7 +70,7 @@ public class Tests {
     }
 
     @Test
-    void debugCSV() throws Exception {
+    void checkingCsvFromZip() throws Exception {
         InputStream inputStream = getFileFromZIP(FileExtension.CSV);
         CSVReader csvReader = new CSVReader(new InputStreamReader(inputStream, UTF_8));
         List<String[]> csv = csvReader.readAll();
@@ -79,65 +78,5 @@ public class Tests {
                 new String[]{"name", "age", "job"},
                 new String[]{"Sergei", "30", "tester"}
         );
-    }
-
-    @Test
-    void readPdfFromZip() throws IOException {
-        ZipFile zipFile = new ZipFile("C:\\Junk\\Projects\\QAguru\\src\\test\\resources\\Desktop.zip");
-
-        Enumeration<? extends ZipEntry> entries = zipFile.entries();
-
-        while (entries.hasMoreElements()) {
-            ZipEntry entry = entries.nextElement();
-            InputStream stream = zipFile.getInputStream(entry);
-
-            if (entry.getName().contains(".pdf")) {
-                PDF pdf = new PDF(stream);
-                assertThat(pdf.text).contains("REMEMBER THESE SHORTCUTS");
-            }
-        }
-    }
-
-    @Test
-    void XLS() throws Exception {
-        ZipFile zipFile = new ZipFile("C:\\Junk\\Projects\\QAguru\\src\\test\\resources\\Desktop.zip");
-        Enumeration<? extends ZipEntry> entries = zipFile.entries();
-
-        while (entries.hasMoreElements()) {
-            ZipEntry entry = entries.nextElement();
-            InputStream stream = zipFile.getInputStream(entry);
-
-            if (entry.getName().contains(".xlsx")) {
-                XLS xls = new XLS(stream);
-                String actualValue = String.valueOf(xls
-                        .excel
-                        .getSheetAt(0)
-                        .getRow(6)
-                        .getCell(2)
-                        .getNumericCellValue());
-
-                assertThat(actualValue).isEqualTo("1613.0");
-            }
-        }
-    }
-
-    @Test
-    void CSV() throws Exception {
-        ZipFile zipFile = new ZipFile("C:\\Junk\\Projects\\QAguru\\src\\test\\resources\\Desktop.zip");
-        Enumeration<? extends ZipEntry> entries = zipFile.entries();
-
-        while (entries.hasMoreElements()) {
-            ZipEntry entry = entries.nextElement();
-            InputStream stream = zipFile.getInputStream(entry);
-
-            if (entry.getName().contains(".csv")) {
-                CSVReader csvReader = new CSVReader(new InputStreamReader(stream, UTF_8));
-                List<String[]> csv = csvReader.readAll();
-                assertThat(csv).contains(
-                        new String[]{"name", "age", "job"},
-                        new String[]{"Sergei", "30", "tester"}
-                );
-            }
-        }
     }
 }
