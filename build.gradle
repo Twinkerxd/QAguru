@@ -1,9 +1,24 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.10.0'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
+
+allure {
+    report { // секция репорта
+        version.set("2.19.0")
+    }
+    adapter { // отвечает за появление папки build/allure-results
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 { // название фреймворка
+                adapterVersion.set("2.19.0") // версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -11,7 +26,7 @@ repositories {
 
 dependencies {
     testImplementation (
-            'com.codeborne:selenide:6.6.6',
+            'com.codeborne:selenide:6.6.6',            // selenide
             'org.junit.jupiter:junit-jupiter:5.9.0',  // Junit
             'org.slf4j:slf4j-simple:1.7.36',         // убирает некоторые строки при запуске
             'com.github.javafaker:javafaker:1.0.2', // генерация тестовых данных
@@ -19,7 +34,8 @@ dependencies {
             'com.codeborne:pdf-test:1.7.0',       // работа с PDF
             'com.codeborne:xls-test:1.4.3',      // работа с xls
             'com.opencsv:opencsv:5.6',          // работа с csv
-            'com.fasterxml.jackson.core:jackson-databind:2.13.3' // работа с json
+            'com.fasterxml.jackson.core:jackson-databind:2.13.3', // работа с json
+            'io.qameta.allure:allure-selenide:2.19.0' // интеграция селенида и аллюра
     )
 }
 
