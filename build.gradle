@@ -6,36 +6,47 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+repositories {
+    mavenCentral()
+}
+
+def allureVersion = "2.19.0"
+def selenideVersion = "6.6.6"
+def junitVersion = "5.9.0"
+def slf4jVersion = "1.7.36"
+def javaFakerVersion = "1.0.2"
+def assertjVersion = "3.23.1"
+def pdfTestVersion = "1.7.0"
+def xlsTestVersion = "1.4.3"
+def openCsvVersion = "5.6"
+def jacksonVersion = "2.13.3"
+
 allure {
-    report { // секция репорта
-        version.set("2.19.0")
+    report {                                             // секция репорта
+        version.set(allureVersion)
     }
-    adapter { // отвечает за появление папки build/allure-results
-        aspectjWeaver.set(true) // обработка аннотации @Step
+    adapter {                                         // отвечает за появление папки build/allure-results
+        aspectjWeaver.set(true)                      // обработка аннотации @Step
         frameworks {
-            junit5 { // название фреймворка
-                adapterVersion.set("2.19.0") // версия интеграции фреймворка и Allure
+            junit5 {                               // название фреймворка
+                adapterVersion.set(allureVersion) // версия интеграции фреймворка и Allure
             }
         }
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     testImplementation (
-            'com.codeborne:selenide:6.6.6',            // selenide
-            'org.junit.jupiter:junit-jupiter:5.9.0',  // Junit
-            'org.slf4j:slf4j-simple:1.7.36',         // убирает некоторые строки при запуске
-            'com.github.javafaker:javafaker:1.0.2', // генерация тестовых данных
-            'org.assertj:assertj-core:3.23.1',     // ассёрты
-            'com.codeborne:pdf-test:1.7.0',       // работа с PDF
-            'com.codeborne:xls-test:1.4.3',      // работа с xls
-            'com.opencsv:opencsv:5.6',          // работа с csv
-            'com.fasterxml.jackson.core:jackson-databind:2.13.3', // работа с json
-            'io.qameta.allure:allure-selenide:2.19.0' // интеграция селенида и аллюра
+            "com.codeborne:selenide:$selenideVersion",                             // selenide
+            "org.junit.jupiter:junit-jupiter:$junitVersion",                      // Junit
+            "org.slf4j:slf4j-simple:$slf4jVersion",                              // убирает некоторые строки при запуске
+            "com.github.javafaker:javafaker:$javaFakerVersion",                 // генерация тестовых данных
+            "org.assertj:assertj-core:$assertjVersion",                        // ассёрты
+            "com.codeborne:pdf-test:$pdfTestVersion",                         // работа с PDF
+            "com.codeborne:xls-test:$xlsTestVersion",                        // работа с xls
+            "com.opencsv:opencsv:$openCsvVersion",                          // работа с csv
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion", // работа с json
+            "io.qameta.allure:allure-selenide:$allureVersion"             // интеграция селенида и аллюра
     )
 }
 
