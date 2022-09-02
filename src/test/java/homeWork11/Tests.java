@@ -1,4 +1,4 @@
-package homeWork10;
+package homeWork11;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
