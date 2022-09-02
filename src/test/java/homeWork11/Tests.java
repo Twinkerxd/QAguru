@@ -3,8 +3,10 @@ package homeWork11;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.withText;
@@ -32,6 +34,14 @@ public class Tests {
     static void setUp() {
         // добавляет шаги в отчет + скрин и соурс при падении
         SelenideLogger.addListener("allure", new AllureSelenide());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("browserName", "chrome");
+//        capabilities.setCapability("browserVersion", "100.0");
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+
+        Configuration.browserCapabilities = capabilities;
 
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
@@ -69,5 +79,13 @@ public class Tests {
         steps.openRepoWithName(REPO_NAME);
         steps.goToPullRequests();
         steps.searchForPullRequestWithName(PR_NAME);
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 }
