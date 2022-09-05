@@ -57,3 +57,39 @@ test {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task one(type: Test) {
+    useJUnitPlatform{
+        includeTags "AAA"
+    }
+}
+
+task two(type: Test) {
+    useJUnitPlatform{
+        includeTags "BBB"
+    }
+}
+
+task all(type: Test) {
+    useJUnitPlatform{
+        includeTags "all"
+    }
+}
+
+task three(type: Test) {
+    useJUnitPlatform{
+        includeTags "run_me_if_you_can"
+    }
+}
