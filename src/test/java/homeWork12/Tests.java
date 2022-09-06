@@ -42,9 +42,9 @@ public class Tests {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", browserName);
-        capabilities.setCapability("browserVersion", browserVersion);
-        capabilities.setCapability("browserSize", browserSize);
+        capabilities.setCapability("browser_name", browserName);
+        capabilities.setCapability("browser_version", browserVersion);
+        capabilities.setCapability("browser_size", browserSize);
 
         if (typeOfRun.equals("remote")) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
