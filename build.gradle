@@ -93,3 +93,9 @@ task three(type: Test) {
         includeTags "run_me_if_you_can"
     }
 }
+
+task selenide_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "selenide_test"
+    }
+}
