@@ -31,29 +31,13 @@ public class Tests {
     public static final String PR_NAME = "Resolve me if you can";
     public static final String REPO_NAME = "QAguru";
 
-    public static final String envURl = System.getProperty("env_url", "local");
+    public static final String envURl = System.getProperty("env_url");
     public static final String browserName = System.getProperty("browser_name", "chrome");
     public static final String browserVersion = System.getProperty("browser_version");
     public static final String browserSize = System.getProperty("browser_size", "1920x1080");
 
     @BeforeAll
     static void setUp() {
-        // добавляет шаги в отчет + скрин и соурс при падении
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-        Configuration.browser = browserName;
-        Configuration.browserSize = browserSize;
-
-        if (envURl.equals("") && envURl == null) {
-
-        } else {
-            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        }
-
-        if (browserVersion != null) {
-            Configuration.browserVersion = browserVersion;
-        }
-
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
@@ -64,6 +48,24 @@ public class Tests {
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
+
+        // добавляет шаги в отчет + скрин и соурс при падении
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        Configuration.browser = browserName;
+        Configuration.browserSize = browserSize;
+
+        if (envURl == null || envURl.equals("")) {
+            // запускаем тест локально
+        } else {
+            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        }
+
+        if (browserVersion != null) {
+            Configuration.browserVersion = browserVersion;
+        }
+
+
 
         // Добавление видео и т.д.
         DesiredCapabilities capabilities = new DesiredCapabilities();
