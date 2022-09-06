@@ -31,6 +31,9 @@ public class Tests {
     public static final String PR_NAME = "Resolve me if you can";
     public static final String REPO_NAME = "QAguru";
 
+    public static final String LOGIN = "user1";
+    public static final String PASSWORD = "1234";
+
     public static final String envURl = System.getProperty("env_url");
     public static final String browserName = System.getProperty("browser_name", "chrome");
     public static final String browserVersion = System.getProperty("browser_version");
@@ -45,11 +48,11 @@ public class Tests {
         Configuration.browserSize = browserSize;
 
         if (envURl == null || envURl.equals("")) {
-            // locale
+            // запуск локально
         } else {
-            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+            // запуск удалённо
+            Configuration.remote = "https://"+LOGIN+":"+PASSWORD+"@" + envURl;
         }
-
 
         if (browserVersion != null) {
             Configuration.browserVersion = browserVersion;
