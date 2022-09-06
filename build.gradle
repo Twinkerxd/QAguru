@@ -80,8 +80,10 @@ task selenide_test(type: Test) {
     useJUnitPlatform{
         includeTags "selenide_test"
     }
-}task annotated_step_test(type: Test) {
-    useJUnitPlatform{
+}
+
+task annotated_step_test(type: Test) {
+    useJUnitPlatform {
         includeTags "annotated_step_test"
     }
 }
