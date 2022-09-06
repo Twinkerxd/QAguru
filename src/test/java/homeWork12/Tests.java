@@ -38,6 +38,30 @@ public class Tests {
 
     @BeforeAll
     static void setUp() {
+        // добавляет шаги в отчет + скрин и соурс при падении
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        Configuration.browser = browserName;
+        Configuration.browserSize = browserSize;
+
+        if (envURl != null || !envURl.equals("")) {
+            // удалённый прогон
+            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        } else {
+            // локальный прогон
+        }
+
+
+        if (browserVersion != null) {
+            Configuration.browserVersion = browserVersion;
+        }
+
+        // Добавление видео и т.д.
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
+
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
@@ -48,30 +72,6 @@ public class Tests {
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
-
-        // добавляет шаги в отчет + скрин и соурс при падении
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-        Configuration.browser = browserName;
-        Configuration.browserSize = browserSize;
-
-        if (envURl == null || envURl.equals("")) {
-            // запускаем тест локально
-        } else {
-            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        }
-
-        if (browserVersion != null) {
-            Configuration.browserVersion = browserVersion;
-        }
-
-
-
-        // Добавление видео и т.д.
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
     }
 
     @Test
@@ -115,6 +115,8 @@ public class Tests {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        Attach.addVideo();
+        if (envURl != null || !envURl.equals("")) {
+            Attach.addVideo();
+        }
     }
 }
