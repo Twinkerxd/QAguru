@@ -87,6 +87,7 @@ public class Tests {
     }
 
     @Test
+    @Tag("run_me_if_you_can")
     void lambdaTest() {
         step("Открываем URL: " + URL, () -> {
             open(URL);
@@ -103,6 +104,7 @@ public class Tests {
     }
 
     @Test
+    @Tag("annotated_step_test")
     void annotatedStepTest() {
         Steps steps = new Steps();
 

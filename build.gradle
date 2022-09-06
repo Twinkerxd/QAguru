@@ -70,25 +70,7 @@ tasks.withType(Test) {
     }
 }
 
-task one(type: Test) {
-    useJUnitPlatform{
-        includeTags "AAA"
-    }
-}
-
-task two(type: Test) {
-    useJUnitPlatform{
-        includeTags "BBB"
-    }
-}
-
-task all(type: Test) {
-    useJUnitPlatform{
-        includeTags "all"
-    }
-}
-
-task three(type: Test) {
+task run_me_if_you_can(type: Test) {
     useJUnitPlatform{
         includeTags "run_me_if_you_can"
     }
@@ -97,5 +79,9 @@ task three(type: Test) {
 task selenide_test(type: Test) {
     useJUnitPlatform{
         includeTags "selenide_test"
+    }
+}task annotated_step_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "annotated_step_test"
     }
 }
