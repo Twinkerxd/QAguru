@@ -44,7 +44,7 @@ public class Tests {
         Configuration.browser = browserName;
         Configuration.browserSize = browserSize;
 
-        if (envURl == null) {
+        if (envURl.equals("")) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
 
