@@ -18,15 +18,6 @@ import static org.openqa.selenium.By.linkText;
 
 public class Tests {
 
-    /**
-     * Написать тест на проверку названия Issue в репозитории через Web-интерфейс.
-     * Этот тест представить в трех вариантах:
-     * 1. Чистый Selenide (с Listener)
-     * 2. Лямбда шаги через step (name, () -> {})
-     * 3. Шаги с аннотацией @Step
-     * В качестве ответа на задание приложите ссылку на свой репозиторий GitHub в поле ответа
-     */
-
     public static final String URL = "https://github.com/Twinkerxd";
     public static final String PR_NAME = "Resolve me if you can";
     public static final String REPO_NAME = "QAguru";
