@@ -31,7 +31,7 @@ public class Tests {
     public static final String PR_NAME = "Resolve me if you can";
     public static final String REPO_NAME = "QAguru";
 
-    public static final String typeOfRun = System.getProperty("type_of_run", "local");
+    public static final String envURl = System.getProperty("env_url", "local");
     public static final String browserName = System.getProperty("browser_name", "chrome");
     public static final String browserVersion = System.getProperty("browser_version");
     public static final String browserSize = System.getProperty("browser_size", "1920x1080");
@@ -44,7 +44,7 @@ public class Tests {
         Configuration.browser = browserName;
         Configuration.browserSize = browserSize;
 
-        if (typeOfRun.equals("remote")) {
+        if (envURl == null) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
 
@@ -58,7 +58,7 @@ public class Tests {
         System.out.println("Browser: " + browserName);
         System.out.println("Version: " + browserVersion);
         System.out.println("Size: " + browserSize);
-        System.out.println("ENV: " + typeOfRun);
+        System.out.println("ENV: " + envURl);
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
