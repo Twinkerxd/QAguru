@@ -41,19 +41,13 @@ public class Tests {
         // добавляет шаги в отчет + скрин и соурс при падении
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browser_name", browserName);
-        capabilities.setCapability("browser_version", browserVersion);
-        capabilities.setCapability("browser_size", browserSize);
-
         if (typeOfRun.equals("remote")) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
 
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-
-        Configuration.browserCapabilities = capabilities;
+        Configuration.browser = browserName;
+        Configuration.browserVersion = browserVersion;
+        Configuration.browserSize = browserSize;
 
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
@@ -67,6 +61,12 @@ public class Tests {
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
+
+        // Добавление видео и т.д.
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
     }
 
     @Test
