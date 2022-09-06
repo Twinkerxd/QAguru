@@ -32,8 +32,8 @@ public class Tests {
     public static final String REPO_NAME = "QAguru";
 
     public static final String typeOfRun = System.getProperty("type_of_run", "local");
-    public static final String browserName = System.getProperty("browser_name", "firefox");
-    public static final String browserVersion = System.getProperty("browser_version", "99");
+    public static final String browserName = System.getProperty("browser_name", "chrome");
+    public static final String browserVersion = System.getProperty("browser_version");
     public static final String browserSize = System.getProperty("browser_size", "1920x1080");
 
     @BeforeAll
@@ -41,23 +41,24 @@ public class Tests {
         // добавляет шаги в отчет + скрин и соурс при падении
         SelenideLogger.addListener("allure", new AllureSelenide());
 
+        Configuration.browser = browserName;
+        Configuration.browserSize = browserSize;
+
         if (typeOfRun.equals("remote")) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
 
-        Configuration.browser = browserName;
-        Configuration.browserVersion = browserVersion;
-        Configuration.browserSize = browserSize;
+        if (browserVersion != null) {
+            Configuration.browserVersion = browserVersion;
+        }
 
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
-        System.out.println("----Tests parameters---------");
         System.out.println("Browser: " + browserName);
-        System.out.println("Browser version: " + browserVersion);
-        System.out.println("Browser size: " + browserSize);
-        System.out.println("Tests running at: " + typeOfRun);
-        System.out.println("-----------------------------");
+        System.out.println("Version: " + browserVersion);
+        System.out.println("Size: " + browserSize);
+        System.out.println("ENV: " + typeOfRun);
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
         System.out.println("-----------------------------");
