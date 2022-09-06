@@ -44,11 +44,10 @@ public class Tests {
         Configuration.browser = browserName;
         Configuration.browserSize = browserSize;
 
-        if (envURl != null || !envURl.equals("")) {
-            // удалённый прогон
-            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        if (envURl == null || envURl.equals("")) {
+            // locale
         } else {
-            // локальный прогон
+            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
 
 
@@ -115,8 +114,12 @@ public class Tests {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        if (envURl != null || !envURl.equals("")) {
+
+        if (envURl == null || envURl.equals("")) {
+            // locale
+        } else {
             Attach.addVideo();
         }
+
     }
 }
