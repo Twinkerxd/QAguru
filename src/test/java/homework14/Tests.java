@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
+@Tag("all")
 public class Tests {
 
     /**
@@ -48,7 +49,6 @@ public class Tests {
     }
 
     @Test
-    @Tag("first")
     void selenideTest() {
         open(URL);
 
@@ -58,7 +58,6 @@ public class Tests {
     }
 
     @Test
-    @Tag("second")
     void lambdaTest() {
         step("Открываем URL: " + URL, () -> {
             open(URL);
@@ -75,7 +74,6 @@ public class Tests {
     }
 
     @Test
-    @Tag("third")
     void annotatedStepTest() {
         Steps steps = new Steps();
 
