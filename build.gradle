@@ -87,3 +87,21 @@ task annotated_step_test(type: Test) {
         includeTags "annotated_step_test"
     }
 }
+
+task first_test(type: Test) {
+    useJUnitPlatform {
+        includeTags "first"
+    }
+}
+
+task second_test(type: Test) {
+    useJUnitPlatform {
+        includeTags "second"
+    }
+}
+
+task third_test(type: Test) {
+    useJUnitPlatform {
+        includeTags "third"
+    }
+}
