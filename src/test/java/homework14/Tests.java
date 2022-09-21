@@ -3,7 +3,10 @@ package homework14;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -80,16 +83,16 @@ public class Tests {
         steps.searchForPullRequestWithName(PR_NAME);
     }
 
-    @Test
-    void failed() {
-        Assertions.assertTrue(1 > 2);
-    }
-
-    @Test
-    @Disabled
-    void skipped() {
-
-    }
+//    @Test
+//    void failed() {
+//        Assertions.assertTrue(1 > 2);
+//    }
+//
+//    @Test
+//    @Disabled
+//    void skipped() {
+//
+//    }
 
     @AfterEach
     void addAttachments() {
