@@ -80,11 +80,11 @@ public class Tests {
         steps.searchForPullRequestWithName(PR_NAME);
     }
 
-//    @Test
-//    void failed() {
-//        Assertions.assertTrue(1 > 2);
-//    }
-//
+    @Test
+    void failed() {
+        failed();
+    }
+
     @Test
     @Disabled
     void skipped() {
